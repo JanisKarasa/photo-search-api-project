@@ -1,6 +1,6 @@
 # A Photo API Search App
 
-**Live Preview: [Click Me](https://photo-search-api-project.netlify.app/)**
+**Live Preview: [Click Me](https://photo-api-search-project.netlify.app/)**
 
 ---
 

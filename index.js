@@ -1,6 +1,6 @@
 let searchForm = document.querySelector("#search-form");
 
-// --- FOR PHOTO SEARCH --- //
+// --- PHOTO SEARCH --- //
 searchForm.addEventListener("submit", function (e) {
   // preventing a Default - Clicking on a "Submit" button, prevent it from submitting a form
   e.preventDefault();
