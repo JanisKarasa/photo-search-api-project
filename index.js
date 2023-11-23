@@ -23,7 +23,7 @@ let searchForm = document.querySelector("#search-form");
 //       console.log("photoData: " + JSON.stringify(photoData));
 
 //       // selecting a container to append a new div for each video
-//       let container = document.querySelector("#photo-divs");
+//       let container = document.querySelector("#content-container");
 
 //       // resetting previous search results before load new search results
 //       container.innerHTML = "";
@@ -32,7 +32,7 @@ let searchForm = document.querySelector("#search-form");
 //       photoData.forEach(function (photo) {
 //         // ... create a div element and giving a class to add some styles
 //         let photoDiv = document.createElement("div");
-//         photoDiv.classList.add("photo-div");
+//         photoDiv.classList.add("content-div");
 //         // ... and populate that div with information
 //         photoDiv.innerHTML = `
 //                   <img src=${photo.src.original}>
@@ -80,16 +80,26 @@ searchForm.addEventListener("submit", function (e) {
       console.log("videoData: " + JSON.stringify(videoData));
 
       // selecting a container to append a new div for each video
-      let container = document.querySelector("#photo-divs");
+      let container = document.querySelector("#content-container");
+
+      // selecting columns to spread/stack the content evenly
+      let contentColumns = document.querySelectorAll(".content-column");
+      let contentColumn1 = document.getElementById("content-column1");
+      let contentColumn2 = document.getElementById("content-column2");
+      let contentColumn3 = document.getElementById("content-column3");
 
       // resetting previous search results before load new search results
-      container.innerHTML = "";
+      // container.innerHTML = "";
+      contentColumn1.innerHTML = "";
+      contentColumn2.innerHTML = "";
+      contentColumn3.innerHTML = "";
+      let i = 0;
 
       // Looping trough - For each video in (search result) videoData array ...
       videoData.forEach(function (video) {
         // ... create a div element and giving a class to add some styles
         let videoDiv = document.createElement("div");
-        videoDiv.classList.add("photo-div");
+        videoDiv.classList.add("content-div");
         // ... and populate that div with information
         videoDiv.innerHTML = `
                 <a href=${video.video_files[0].link}>
@@ -97,7 +107,12 @@ searchForm.addEventListener("submit", function (e) {
                 </a>
                 `;
 
-        container.appendChild(videoDiv);
+        contentColumns[i].appendChild(videoDiv);
+        if (i < container.childElementCount - 1) {
+          i++;
+        } else {
+          i = 0;
+        }
       });
     }
   };
